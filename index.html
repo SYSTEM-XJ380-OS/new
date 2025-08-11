@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus - 莲花工作室</title>
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #FFC107;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn2 {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #1976D2;
+        }
+
+        .btn2:hover {
+            background: #9d35b8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>莲花工作室</h1>
+            <a href="register.html"><button class="btn2">注册Lotus账号</button></a>
+            <a href="login.html"><button class="btn2">登入Lotus账号</button></a>
+            <button onclick="logout()" class="btn2">退出登录</button>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>抽象</h2>
+                <p>我们可以为您提供情绪价值！</p>
+                <button class="btn">了解更多</button>
+            </div>
+
+            <div class="card">
+                <h2>实用</h2>
+                <p>顾名思义</p>
+                <button class="btn">查看详情</button>
+            </div>
+
+            <div class="card">
+                <h2>全部产品</h2>
+                <p>          </p>
+                <button class="btn">详情</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 检查登录状态
+    function checkLogin() {
+        const cookies = document.cookie.split(';');
+        const userCookie = cookies.find(cookie => cookie.trim().startsWith('lotusUser='));
+        
+        /*
+        if (!userCookie) {
+            window.location.href = 'login.html';
+        }
+        */
+    }
+
+    // 退出登录
+    function logout() {
+        document.cookie = 'lotusUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        window.location.href = 'login.html';
+    }
+
+    // 在需要登录的页面部分添加检查
+    checkLogin();
+    </script>
+</body>
+</html>
